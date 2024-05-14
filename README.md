@@ -14,7 +14,7 @@
 - cuda : 11.2
 
 ## Usage
-- train.py : training a neural network model on CIFAR-10 dataset with options for random label noise and validation
+- train.py : training a neural network model on CIFAR-10 dataset with options for random label noise and validation
 - model.py : resnet-18 block
 - tsne_model.py : Replace the fully connected (fc) layer with the Identity layer
 - distribution.py : Check the distribution of randomly labeled classes
