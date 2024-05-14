@@ -23,19 +23,19 @@
 - umap_img.py : UMAP visualization
 
 ## Implementation
-- 1. train
-'''
+1. train
+```
 python train.py
-'''
-- 2. custom checkpoint
-'''
+```
+3. custom checkpoint
+```
 python custom_checkpoint.py
-'''
-- 3. test & visualization
-'''
+```
+4. test & visualization
+```
 python tsne_img.py
 python umap_img.py
-'''
+```
 
 ## [Reference]
 Stephenson, Cory, et al. "On the geometry of generalization and memorization in deep neural networks." arXiv preprint arXiv:2105.14602 (2021).
