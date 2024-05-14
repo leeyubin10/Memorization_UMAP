@@ -18,6 +18,8 @@
 - model.py : resnet-18 block
 - dataloader.py : load data
 - distribution.py : Check the distribution of randomly labeled classes
+- tsne-img.py : t-SNE visualization
+- umap_img.py : UMAP visualization
 
 ## [Reference]
 Stephenson, Cory, et al. "On the geometry of generalization and memorization in deep neural networks." arXiv preprint arXiv:2105.14602 (2021).
