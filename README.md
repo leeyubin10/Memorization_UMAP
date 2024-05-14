@@ -14,15 +14,28 @@
 - cuda : 11.2
 
 ## Usage
-- train.py : Training
+- train.py : training a neural network model on CIFAR-10 dataset with options for random label noise and validation
 - model.py : resnet-18 block
-- dataloader.py : load data
+- tsne_model.py : Replace the fully connected (fc) layer with the Identity layer
 - distribution.py : Check the distribution of randomly labeled classes
+- custom_checkpoint.py : This script removes unexpected keys from checkpoint files
 - tsne-img.py : t-SNE visualization
 - umap_img.py : UMAP visualization
 
 ## Implementation
-- python train.py
+- 1. train
+'''
+python train.py
+'''
+- 2. custom checkpoint
+'''
+python custom_checkpoint.py
+'''
+- 3. test & visualization
+'''
+python tsne_img.py
+python umap_img.py
+'''
 
 ## [Reference]
 Stephenson, Cory, et al. "On the geometry of generalization and memorization in deep neural networks." arXiv preprint arXiv:2105.14602 (2021).
