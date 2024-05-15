@@ -6,7 +6,7 @@ from torchvision.models import resnet18
 class CustomResNet(nn.Module):
     def __init__(self):
         super(CustomResNet, self).__init__()
-        self.resnet = resnet18(pretrained=True)
+        self.resnet = resnet18(pretrained=False)
         self.features = None
 
         # Register hook to extract features
