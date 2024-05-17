@@ -30,6 +30,9 @@ tsne = TSNE(n_components=2, random_state=0)
 # Load CIFAR-10 dataset
 test_dataset = test_dataset = ImageFolder(root='cifar-10/train', transform=transform)
 
+# Define the number of data points to visualize per class
+num_points_per_class = 1000  # You can adjust this number as needed
+
 # Create data loader
 batch_size = 64
 test_loader = DataLoader(test_dataset, batch_size=batch_size, shuffle=False)
@@ -64,25 +67,36 @@ for epoch in epochs_to_visualize:
     # Concatenate features and labels from all epochs
     all_features = np.concatenate(all_features, axis=0)
     all_labels = np.concatenate(all_labels, axis=0)
-
-    # Apply t-SNE
-    tsne_results = tsne.fit_transform(all_features)
     
-    for i, epoch_file in enumerate(epochs_to_visualize):
-        plt.figure(figsize=(10, 8))
-        for j in range(10):
-            idx = np.where(all_labels == j)
-            plt.scatter(tsne_results[idx, 0], tsne_results[idx, 1], marker='.', label=str(j), alpha=0.5)
-        plt.xlabel('t-SNE Dimension 1')
-        plt.ylabel('t-SNE Dimension 2')
-        plt.title(f't-SNE Visualization of ResNet-18 Features (Epoch {epoch})')
-        plt.legend()
+    # Reduce the number of data points per class
+    reduced_features = []
+    reduced_labels = []
+    for class_label in range(10):  # Assuming 10 classes
+        class_indices = np.where(all_labels == class_label)[0]
+        selected_indices = np.random.choice(class_indices, size=num_points_per_class, replace=False)
+        reduced_features.append(all_features[selected_indices])
+        reduced_labels.append(all_labels[selected_indices])
+    
+    reduced_features = np.concatenate(reduced_features, axis=0)
+    reduced_labels = np.concatenate(reduced_labels, axis=0)
+    
+    # Apply t-SNE
+    tsne_results = tsne.fit_transform(reduced_features)
+    
+    plt.figure(figsize=(10, 8))
+    for j in range(10):
+        idx = np.where(reduced_labels == j)
+        plt.scatter(tsne_results[idx, 0], tsne_results[idx, 1], marker='.', label=str(j), alpha=0.5)
+    plt.xlabel('t-SNE Dimension 1')
+    plt.ylabel('t-SNE Dimension 2')
+    plt.title(f't-SNE Visualization of ResNet-18 Features (Epoch {epoch})')
+    plt.legend()
         
-        # Save the plot as an image file
-        save_dir = 'tsne_visualizations'
-        if not os.path.exists(save_dir):
-            os.makedirs(save_dir)
-        plt.savefig(os.path.join(save_dir, f'tsne_epoch_{epoch}.png'))
-        plt.close()  # Close the plot to release memory
+    # Save the plot as an image file
+    save_dir = 'tsne_visualizations'
+    if not os.path.exists(save_dir):
+        os.makedirs(save_dir)
+    plt.savefig(os.path.join(save_dir, f'tsne_epoch_{epoch}.png'))
+    plt.close()  # Close the plot to release memory
 
 print("t-SNE visualizations saved.")
