@@ -28,7 +28,7 @@ transform = transforms.Compose([
 tsne = TSNE(n_components=2, random_state=0)
 
 # Load CIFAR-10 dataset
-test_dataset = test_dataset = ImageFolder(root='cifar-10/test', transform=transform)
+test_dataset = test_dataset = ImageFolder(root='cifar-10/train', transform=transform)
 
 # Create data loader
 batch_size = 64
