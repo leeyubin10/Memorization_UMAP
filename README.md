@@ -1,4 +1,4 @@
-# Memorization_UMAP
+# Memorization_t-SNE
 - Model : ResNet-18
 - Dataset : CIFAR-10
 - Permuted Rate : 50%
