@@ -15,7 +15,7 @@
 │   ├── test
 │   └── val
 │ 
-├── train_shuffle.py
+├── data_shuffle.py
 ├── train.py
 ├── model.py
 ├── tsne_model.py
@@ -31,7 +31,7 @@
 - cuda : 11.2
 
 ## Usage
-- train_shuffle.py : Generate random labels according to a specified ratio
+- data_shuffle.py : Generate random labels according to a specified ratio
 - train.py : training a neural network model on CIFAR-10 dataset
 - model.py : resnet-18 block
 - tsne_model.py : Replace the fully connected (fc) layer with the Identity layer
@@ -43,7 +43,7 @@
 ## Implementation
 1. Reconstruct the training dataset
 ```
-python train_shuffle.py
+python data_shuffle.py
 ```  
 2. train
 ```
