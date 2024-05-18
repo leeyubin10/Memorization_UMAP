@@ -20,21 +20,10 @@
 │   ├── ...
 │   └── truck
 │
-├── random_label
-│   ├── airplane
-│   ├── ...
-│   └── truck
-│ 
-├── data_shuffle.py
-├── train.py
-├── model.py
-├── tsne_model.py
-├── distribution.py
-├── custom_checkpoint.py
-├── tsne_img.py
-├── tsne_img_permuted.py
-├── umap_img.py
-└── count.ipynb
+└── random_label
+    ├── airplane
+    ├── ...
+    └── truck
 ``` 
 
 ## Setup
