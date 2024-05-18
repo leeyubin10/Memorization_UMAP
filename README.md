@@ -39,6 +39,7 @@
 - distribution.py : Check the distribution of randomly labeled classes
 - custom_checkpoint.py : This script removes unexpected keys from checkpoint files
 - tsne-img.py : t-SNE visualization
+- tsne-img_permuted.py : t-SNE visualization by distinguishing between random_label and original_label
 - umap_img.py : UMAP visualization
 
 ## Implementation
