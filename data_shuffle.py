@@ -67,22 +67,22 @@ def process_dataset():
 
     # Save original labeled images
     for class_idx in range(num_classes):
-        os.makedirs(os.path.join('train', class_names[class_idx]), exist_ok=True)
+        os.makedirs(os.path.join('train_random/original_label', class_names[class_idx]), exist_ok=True)
 
     for idx in original_indices:
         path, label = train_dataset.samples[idx]
         class_folder = class_names[label]
-        shutil.copy(path, os.path.join('train', class_folder, os.path.basename(path)))
+        shutil.copy(path, os.path.join('train_random/original_label', class_folder, os.path.basename(path)))
 
     # Save random labeled images
     for class_idx in range(num_classes):
-        os.makedirs(os.path.join('train', class_names[class_idx]), exist_ok=True)
+        os.makedirs(os.path.join('train_random/random_label', class_names[class_idx]), exist_ok=True)
 
     for idx in random_label_indices:
         path, _ = train_dataset.samples[idx]
         new_label = random_labels[idx]
         class_folder = class_names[new_label]
-        shutil.copy(path, os.path.join('train', class_folder, os.path.basename(path)))
+        shutil.copy(path, os.path.join('train_random/random_label', class_folder, os.path.basename(path)))
 
 if __name__ == "__main__":
     process_dataset()
