@@ -5,10 +5,10 @@ from torchvision.datasets import ImageFolder
 from torchvision.transforms import transforms
 from distribution import visualize_dataset
 
-# train 폴더 생성
+# Create a 'train' folder
 os.makedirs('train', exist_ok=True)
 
-# 클래스 이름 리스트
+# List of class names
 class_names = ['airplane', 'automobile', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck']
 
 # Define parameters
