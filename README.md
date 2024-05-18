@@ -11,9 +11,19 @@
 ##
 ```Memorization_UMAP
 ├── cifar-10
-│   ├── train
+│   ├── train   ## permuted or original
 │   ├── test
 │   └── val
+│
+├── original_label
+│   ├── airplane
+│   ├── ...
+│   └── truck
+│
+├── random_label
+│   ├── airplane
+│   ├── ...
+│   └── truck
 │ 
 ├── data_shuffle.py
 ├── train.py
@@ -22,7 +32,9 @@
 ├── distribution.py
 ├── custom_checkpoint.py
 ├── tsne_img.py
-└── umap_img.py
+├── tsne_img_permuted.py
+├── umap_img.py
+└── count.ipynb
 ``` 
 
 ## Setup
