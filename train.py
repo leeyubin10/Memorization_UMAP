@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import numpy as np
 import torch.optim as optim
+import matplotlib.pyplot as plt
 from torch.utils.data import DataLoader
 from torchvision.datasets import ImageFolder
 from torchvision.transforms import transforms
@@ -44,6 +45,11 @@ def train_model():
     # Define the loss function and optimizer
     criterion = nn.CrossEntropyLoss()
     optimizer = optim.Adam(model.parameters(), lr=learning_rate)
+    
+    # Initialize lists to store loss and accuracy
+    train_losses = []
+    train_accuracies = []
+    val_accuracies = []
 
     # Train the model
     best_accuracy = 0.0
@@ -76,6 +82,8 @@ def train_model():
         # Compute epoch statistics
         epoch_loss = running_loss / len(train_dataset)
         epoch_accuracy = correct_predictions / total_predictions
+        train_losses.append(epoch_loss)
+        train_accuracies.append(epoch_accuracy)
 
         # Print epoch statistics
         print(f'Epoch [{epoch + 1}/{num_epochs}], Loss: {epoch_loss:.4f}, Accuracy: {epoch_accuracy:.4f}')
@@ -93,6 +101,7 @@ def train_model():
                 val_correct_predictions += (predicted == labels).sum().item()
 
         val_accuracy = val_correct_predictions / val_total_predictions
+        val_accuracies.append(val_accuracy)
         print(f'Validation Accuracy: {val_accuracy:.4f}')
         
         # Save the model checkpoint
@@ -106,6 +115,28 @@ def train_model():
 
     # Save the final model
     torch.save(model.state_dict(), 'resnet18_last.pth')
+    
+    # Plot and save graphs
+    epochs = range(1, num_epochs + 1)
+    plt.figure(figsize=(10, 6))
+
+    # Plot training loss
+    plt.plot(epochs, train_losses, label='Training Loss', color='blue')
+    
+    # Plot training accuracy
+    plt.plot(epochs, train_accuracies, label='Training Accuracy', color='green')
+    
+    # Plot validation accuracy
+    plt.plot(epochs, val_accuracies, label='Validation Accuracy', color='red')
+
+    plt.xlabel('Epochs')
+    plt.ylabel('Value')
+    plt.title('Training and Validation Metrics')
+    plt.legend()
+    plt.grid(True)
+    plt.tight_layout()
+    plt.savefig('training_metrics_combined.png')
+    plt.show()
 
 if __name__ == "__main__":
     train_model()
