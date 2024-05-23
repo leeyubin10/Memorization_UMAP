@@ -61,5 +61,9 @@ python tsne_img.py
 python umap_img.py
 ```
 
+## Results
+![그림1](https://github.com/leeyubin10/Memorization_t-SNE/assets/68275474/b21d3663-5414-4bb5-9b2e-ba91316e2caa)
+
+
 ## [Reference]
 Stephenson, Cory, et al. "On the geometry of generalization and memorization in deep neural networks." arXiv preprint arXiv:2105.14602 (2021).
